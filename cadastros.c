@@ -8,7 +8,7 @@
 #define MAX_ENDERECO 50
 #define MAX_DETALHAMENTOSERV 100
 
-
+ 
 //declaração das structs com características específicas de cada "tópico"
 
 /*typedef struct compra {

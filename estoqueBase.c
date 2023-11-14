@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+ 
 struct compra {
     char fornecedor[50];
     char nomeProduto[50];

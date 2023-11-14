@@ -6,7 +6,7 @@
 #define MAX_EMAIL 50
 #define MAX_ENDERECO 50
 #define MAX_DETALHAMENTOSERV 100
-
+ 
 typedef struct prestador {
     char nome[MAX_NOME];
     char endEletronico[MAX_ENDERECO];
