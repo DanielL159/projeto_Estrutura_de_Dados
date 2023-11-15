@@ -1,38 +1,41 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 
 #define MAX_NOME 50
 #define MAX_EMAIL 50
 #define MAX_ENDERECO 50
 #define MAX_DETALHAMENTOSERV 100
 
-typedef struct  {
-    char detalhamento[MAX_DETALHAMENTOSERV];
-    char dataServico[20];
-    float preco;
-}servico;
+//declaraÃ§Ã£o das structs com caracterÃ­sticas especÃ­ficas de cada "tÃ³pico"
 
-typedef struct  {
-    servico produto;
+/*typedef struct compra {
+};*/
+
+typedef struct{
+    char detalhamento[MAX_DETALHAMENTOSERV];
+    char dataCadastro[20];
+    float preco;
+}Servico;
+
+typedef struct{
+    Servico produto;
     char nome[MAX_NOME];
     char endEletronico[MAX_ENDERECO];
     char email[MAX_EMAIL];
     int telefone;
     char endereco[MAX_ENDERECO];
     char UF[4]; 
-}prestador;
+}Prestador;
 
-typedef struct  {
+typedef struct{
     char nome[MAX_NOME];
     int idade;
     char email[MAX_EMAIL];
     int telefone;
     char endereco[MAX_ENDERECO];
     int UF;
-}consumidor;
+}Consumidor;
 
 char *cadastrarUF(int opcao){
     static char UF[4];
@@ -45,7 +48,7 @@ char *cadastrarUF(int opcao){
             strcpy(UF, "AL"); // Alagoas
             break;
         case 3:
-            strcpy(UF, "AP"); // Amapá
+            strcpy(UF, "AP"); // AmapÃ¡
             break;
         case 4:
             strcpy(UF, "AM"); // Amazonas
@@ -54,16 +57,16 @@ char *cadastrarUF(int opcao){
             strcpy(UF, "BA"); // Bahia
             break;
         case 6:
-            strcpy(UF, "CE"); // Ceará
+            strcpy(UF, "CE"); // CearÃ¡
             break;
         case 7:
-            strcpy(UF, "ES"); // Espírito Santo
+            strcpy(UF, "ES"); // EspÃ­rito Santo
             break;
         case 8:
-            strcpy(UF, "GO"); // Goiás
+            strcpy(UF, "GO"); // GoiÃ¡s
             break;
         case 9:
-            strcpy(UF, "MA"); // Maranhão
+            strcpy(UF, "MA"); // MaranhÃ£o
             break;
         case 10:
             strcpy(UF, "MT"); // Mato Grosso
@@ -75,19 +78,19 @@ char *cadastrarUF(int opcao){
             strcpy(UF, "MG"); // Minas Gerais
             break;
         case 13:
-            strcpy(UF, "PA"); // Pará
+            strcpy(UF, "PA"); // ParÃ¡
             break;
         case 14:
-            strcpy(UF, "PB"); // Paraíba
+            strcpy(UF, "PB"); // ParaÃ­ba
             break;
         case 15:
-            strcpy(UF, "PR"); // Paraná
+            strcpy(UF, "PR"); // ParanÃ¡
             break;
         case 16:
             strcpy(UF, "PE"); // Pernambuco
             break;
         case 17:
-            strcpy(UF, "PI"); // Piauí
+            strcpy(UF, "PI"); // PiauÃ­
             break;
         case 18:
             strcpy(UF, "RJ"); // Rio de Janeiro
@@ -99,7 +102,7 @@ char *cadastrarUF(int opcao){
             strcpy(UF, "RS"); // Rio Grande do Sul
             break;
         case 21:
-            strcpy(UF, "RO"); // Rondônia
+            strcpy(UF, "RO"); // RondÃ´nia
             break;
         case 22:
             strcpy(UF, "RR"); // Roraima
@@ -108,7 +111,7 @@ char *cadastrarUF(int opcao){
             strcpy(UF, "SC"); // Santa Catarina
             break;
         case 24:
-            strcpy(UF, "SP"); // São Paulo
+            strcpy(UF, "SP"); // SÃ£o Paulo
             break;
         case 25:
             strcpy(UF, "SE"); // Sergipe
@@ -117,11 +120,12 @@ char *cadastrarUF(int opcao){
             strcpy(UF, "TO"); // Tocantins
             break;
         default:
-            printf("Opção inválida. Digite um número de 1 a 26.\n");
+            printf("OpÃ§Ã£o invÃ¡lida. Digite um nÃºmero de 1 a 26.\n");
     }
     return UF;
 }
-void cadastrarPrestador(prestador *industria) {
+
+void cadastrarPrestador(Prestador *industria) {
     char x[4];
     int opcao=0;
 
@@ -145,7 +149,6 @@ void cadastrarPrestador(prestador *industria) {
     printf("ENDERECO: ");
     scanf("%s", &(*industria).endereco);
     fflush(stdin);
-
     
     printf("UNIDADE FEDERATIVA:\n\n");
     printf("[1]--> (AC)Acre\t\t[2]--> (AL)Alagoas\t\t[3]--> (AP)Amapa\t\t[4]--> (AM)Amazonas\n[5]--> (BA)Bahia\t[6]--> (CE)Ceara\t\t[7]--> (ES)Espirito Santo\t[8]--> (GO)Goias\n[9]--> (MA)Maranhao\t[10]--> (MT)Mato Grosso\t\t[11]--> (MS)Mato Grosso do Sul\t[12]--> (MG)Minas Gerais\n[13]--> (PA)Para\t[14]--> (PB)Paraiba\t\t[15]--> (PR)Parana\t\t[16]--> (PE)Pernambuco\n[17]--> (PI)Piaui\t[18]--> (RJ)Rio de Janeiro\t[19]--> (RN)Rio Grande do Norte\t[20]--> (RS)Rio Grande do Sul\n[21]--> (RO)Rondonia\t[22]--> (RR)Roraima\t\t[23]--> (SC)Santa Catarina\t[24]--> (SP)Sao Paulo\n[25]--> (SE)Sergipe\t[26]--> (TO)Tocantins\n\nDIGITE UMA UF:");
@@ -153,5 +156,4 @@ void cadastrarPrestador(prestador *industria) {
     strcpy((*industria).UF, cadastrarUF(opcao));
     fflush(stdin);
 }
-
 
