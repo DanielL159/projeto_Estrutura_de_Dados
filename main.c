@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "biblioteca.h"
 #include "biblioteca_2.h"
 #include <time.h>
 
@@ -10,34 +9,10 @@
 #define MAX_ENDERECO 50
 #define MAX_DETALHAMENTOSERV 100
  
-//declaração das structs com características específicas de cada "tópico"
+//declaraÃ§Ã£o das structs com caracterÃ­sticas especÃ­ficas de cada "tÃ³pico"
 
 /*typedef struct compra {
 };*/
-typedef struct  {
-    char detalhamento[MAX_DETALHAMENTOSERV];
-    char dataCadastro[20];
-    float preco;
-}servico;
-
-typedef struct  {
-    servico produto;
-    char nome[MAX_NOME];
-    char endEletronico[MAX_ENDERECO];
-    char email[MAX_EMAIL];
-    int telefone;
-    char endereco[MAX_ENDERECO];
-    char UF[4]; 
-}prestador;
-
-typedef struct  {
-    char nome[MAX_NOME];
-    int idade;
-    char email[MAX_EMAIL];
-    int telefone;
-    char endereco[MAX_ENDERECO];
-    int UF;
-}consumidor;
 
 int main() {
     int nPrestador = 0;
@@ -45,6 +20,7 @@ int main() {
     consumidor cliente[100];
     int opcao;
     int sair=0;
+	int i;
 
     do {
         printf("\n\n********FARMACIA*********\n\n");
@@ -65,16 +41,14 @@ int main() {
 
         switch (opcao) {
             case 1:
-            int i =0;
-            do
-            { 
+            i = 0;
+            do{ 
                 cadastrarPrestador(&industria[i]);
 
                 printf("Deseja cadastrar um produto a empresa %s: (1)SIM (0)NAO",industria[i].produto.detalhamento);
                 scanf("%d",&opcao);
 
-                if (opcao ==1)
-                {
+                if (opcao ==1){
                     printf("Qual o nome do produto:");
                     fflush(stdin);
                     scanf("%s",&industria[i].produto.detalhamento);
@@ -93,8 +67,7 @@ int main() {
                     strftime(industria[i].produto.dataCadastro, sizeof(industria[i].produto.dataCadastro), "%Y-%m-%d %H:%M:%S", infoTempo);
                     printf("Data do cadastro %s",industria[i].produto.dataCadastro);
                     
-                }do
-                {
+                }do{
                     printf("Deseja cadastrar mais alguma empresa: (1)Sim (0)Nao");
                     scanf("%d",&sair);
                 } while (sair <0 || sair >1);
