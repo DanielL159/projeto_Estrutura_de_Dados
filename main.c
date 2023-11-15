@@ -93,7 +93,13 @@ int main() {
                     strftime(industria[i].produto.dataCadastro, sizeof(industria[i].produto.dataCadastro), "%Y-%m-%d %H:%M:%S", infoTempo);
                     printf("Data do cadastro %s",industria[i].produto.dataCadastro);
                     
-                }
+                }do
+                {
+                    printf("Deseja cadastrar mais alguma empresa: (1)Sim (0)Nao");
+                    scanf("%d",&sair);
+                } while (sair <0 || sair >1);
+                
+            
                 
 
             } while (sair !=1); 
