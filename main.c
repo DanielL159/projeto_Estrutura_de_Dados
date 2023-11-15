@@ -99,9 +99,6 @@ int main() {
                     scanf("%d",&sair);
                 } while (sair <0 || sair >1);
                 
-            
-                
-
             } while (sair !=1); 
             
             
