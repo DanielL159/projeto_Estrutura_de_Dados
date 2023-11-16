@@ -13,7 +13,7 @@ int main()
 {
     char tmps[50];
     char compras[MAX_DETALHAMENTOSERV];
-    int i = 0, x = 0,j = 0;
+    int i = 0, x = 0;
     int nPrestador = 0;
     int nCliente = 0;
     int nProdutos = 0;
@@ -99,7 +99,7 @@ int main()
                     do
                     {
                         printf("O que o cliente deseja compro :");
-                        for ( x = 0; x <= nProdutos; x++)
+                        for (int x = 0; x <= nProdutos; x++)
                         {
                             printf("%s", industria[x].produto.detalhamento);
                         }
@@ -136,11 +136,7 @@ int main()
             break;
 
         case 3:
-<<<<<<< HEAD
             for (int x = 0; x < nProdutos; x++)
-=======
-            for ( x = 0; x <= nProdutos; x++)
->>>>>>> e995225438549a6d267a7d9df51d561dde855a75
             {
                 printf("%s", industria[x].produto.detalhamento);
                 printf("%s", industria[x].produto.dataCadastro);
@@ -150,17 +146,7 @@ int main()
             break;
 
         case 4:
-<<<<<<< HEAD
             for (int x = 0; x < nCliente; x++)
-            {
-                printf("%s", cliente[x].nome);
-                printf("%d", cliente[x].idade);
-                printf("%s", cliente[x].email);
-                printf("%d", cliente[x].telefone);
-                printf("%s", cliente[x].endereco);
-                printf("%s", cliente[x].UF);
-=======
-            for ( x = 0; x <= nCliente; x++)
             {
                 printf("%s\n", cliente[x].nome);
                 printf("%d\n", cliente[x].idade);
@@ -168,31 +154,22 @@ int main()
                 printf("%d\n", cliente[x].telefone);
                 printf("%s\n", cliente[x].endereco);
                 printf("%s\n", cliente[x].UF);
->>>>>>> e995225438549a6d267a7d9df51d561dde855a75
-                printf("%.2f", cliente[x].compra);
+                printf("%.2f\n", cliente[x].compra);
                 printf("\n");
             }
             break;
 
         case 5:
-            for ( x = 0; x <= nPrestador; x++)
+            for (int x = 0; x < nPrestador; x++)
             {
-<<<<<<< HEAD
-                printf("%s", industria[x].nome);
-                printf("%s", industria[x].endEletronico);
-                printf("%s", industria[x].email);
-                printf("%d", industria[x].telefone);
-                printf("%s", industria[x].endereco);
-                printf("%s", industria[x].UF);
-=======
                 printf("%s\n", industria[x].nome);
                 printf("%s\n", industria[x].endEletronico);
                 printf("%s\n", industria[x].email);
                 printf("%d\n", industria[x].telefone);
                 printf("%s\n", industria[x].endereco);
                 printf("%s\n", industria[x].UF);
->>>>>>> e995225438549a6d267a7d9df51d561dde855a75
-                printf("\n");
+                printf("\n\n");
+
             }
             break;
 
@@ -209,9 +186,9 @@ int main()
             break;
 
         case 9:
-            for ( i = 0; i < nProdutos - 1; i++)
+            for (int i = 0; i < nProdutos - 1; i++)
             {
-                for ( j = 0; j < nProdutos - i - 1; j++)
+                for (int j = 0; j < nProdutos - i - 1; j++)
                 {
                     if (strcmp(industria[j].produto.detalhamento, industria[j + 1].produto.detalhamento) > 0)
                     {
@@ -233,9 +210,9 @@ int main()
             break;
 
         case 10:
-            for ( i = 0; i < nCliente - 1; i++)
+            for (int i = 0; i < nCliente - 1; i++)
             {
-                for ( j = 0; j < nCliente - i - 1; j++)
+                for (int j = 0; j < nCliente - i - 1; j++)
                 {
                     if (strcmp(cliente[j].nome, cliente[j + 1].nome) > 0)
                     {
