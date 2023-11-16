@@ -11,9 +11,11 @@
 
 int main()
 {
-    int i = 0;
+    char compras[MAX_DETALHAMENTOSERV];
+    int i = 0, x = 0;
     int nPrestador = 0;
     int nCliente = 0;
+    int nProdutos = 0;
     prestador industria[100];
     consumidor cliente[100];
     int opcao;
@@ -64,6 +66,7 @@ int main()
 
                     strftime(industria[i].produto.dataCadastro, sizeof(industria[i].produto.dataCadastro), "%Y-%m-%d %H:%M:%S", infoTempo);
                     printf("Data do cadastro %s", industria[i].produto.dataCadastro);
+                    nProdutos++;
                 }
 
                 do
@@ -81,6 +84,7 @@ int main()
 
         case 2:
             i = 0;
+            sair = 0;
             do
             {
                 cadastrarConsumidor(&cliente[i]);
@@ -91,18 +95,41 @@ int main()
 
                 if (opcao == 1)
                 {
-                    // Implemente a lógica para cadastrar compra
-                }
+                    do
+                    {
+                        printf("O que o cliente deseja compro :");
+                        for (int x = 0; x <= nProdutos; x++)
+                        {
+                            printf("%s", industria[x].produto.detalhamento);
+                        }
+                        scanf("%s", compras);
+                        for (x = 0; x < nProdutos; x++)
+                        {
+                            if (strcmp(compras, industria[x].produto.detalhamento) == 0)
+                            {
+                                cliente[i].compra += industria[x].produto.preco;
+                            }
+                        }
 
-                do
-                {
-                    printf("Deseja cadastrar mais algum cliente: (1)Sim (0)Nao");
-                    scanf("%d", &sair);
-                } while (sair < 0 || sair > 1);
+                        printf("O cliente deseja compra mais algo ?(1)SIM (0)NAO");
+                        scanf("%d", sair);
+                        if (sair == 0)
+                        {
+                            printf("Total da compra: %.2f",cliente[i].compra);
+                        }
+                        
+                    } while (sair != 1);
 
-                if (sair == 1)
-                {
-                    i++;
+                    do
+                    {
+                        printf("Deseja cadastrar mais algum cliente: (1)Sim (0)Nao");
+                        scanf("%d", &sair);
+                    } while (sair < 0 || sair > 1);
+
+                    if (sair == 1)
+                    {
+                        i++;
+                    }
                 }
             } while (sair != 0);
             break;
@@ -144,11 +171,10 @@ int main()
 
         default:
             printf("Digite um numero valido!\n");
+
+            printf("\n\nPrograma encerrado!\n");            
         }
-
-    } while (opcao != 11);
-
-    printf("\n\nPrograma encerrado!\n");
+    }while (opcao != 11);
 
     return 0;
 }

@@ -33,6 +33,7 @@ typedef struct {
     int telefone;
     char endereco[MAX_ENDERECO];
     char UF[4];
+    float compra ;
 } consumidor;
 
 char *cadastrarUF(int opcao) {
@@ -161,6 +162,7 @@ void cadastrarPrestador(prestador *industria) {
 
 void cadastrarConsumidor(consumidor *comprador) {
     int opcao;
+    comprador->compra =0;
 
     printf("Comprador\n__________\n");
     printf("\nNOME: ");
