@@ -267,7 +267,7 @@ int main()
         default:
             if (opcao != 11)
             {
-                printf("Digite um numero valido!\n")
+                printf("Digite um numero valido!\n");
             }
         }
     } while (opcao != 11);
