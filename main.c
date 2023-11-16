@@ -93,7 +93,7 @@ int main()
 
                 printf("Deseja cadastrar uma compra ao cliente a empresa %s: (1)SIM (0)NAO", cliente[i].nome);
                 scanf("%d", &opcao);
-
+ 
                 if (opcao == 1)
                 {
                     do
