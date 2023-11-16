@@ -124,7 +124,7 @@ char *cadastrarUF(int opcao) {
     return UF;
 }
 
-void cadastrarPrestador(prestador *industria) {
+void cadastrarPrestador(prestador *industria, int *nPrestador) {
     int opcao = 0;
 
     printf("Prestador\n____________\n");
@@ -158,9 +158,10 @@ void cadastrarPrestador(prestador *industria) {
            "[25]--> (SE)Sergipe\t[26]--> (TO)Tocantins\n\nDIGITE UMA UF:");
     scanf("%d", &opcao);
     strcpy((*industria).UF, cadastrarUF(opcao));
+    (*nPrestador)++;
 }
 
-void cadastrarConsumidor(consumidor *comprador) {
+void cadastrarConsumidor(consumidor *comprador,int *nCliente ) {
     int opcao;
     comprador->compra =0;
 
@@ -195,6 +196,7 @@ void cadastrarConsumidor(consumidor *comprador) {
            "[25]--> (SE)Sergipe\t[26]--> (TO)Tocantins\n\nDIGITE UMA UF:");
     scanf("%d", &opcao);
     strcpy(comprador->UF, cadastrarUF(opcao));
+    (*nCliente)++;
 }
 
 

@@ -45,8 +45,8 @@ int main()
         case 1:
             do
             {
-                cadastrarPrestador(&industria[i]);
-                nPrestador++;
+                cadastrarPrestador(&industria[i],&nPrestador);
+                
 
                 printf("Deseja cadastrar um produto a empresa %s: (1)SIM (0)NAO", industria[i].produto.detalhamento);
                 scanf("%d", &opcao);
@@ -88,8 +88,8 @@ int main()
             sair = 0;
             do
             {
-                cadastrarConsumidor(&cliente[i]);
-                nCliente++;
+                cadastrarConsumidor(&cliente[i],&nCliente);
+                
 
                 printf("Deseja cadastrar uma compra ao cliente a empresa %s: (1)SIM (0)NAO", cliente[i].nome);
                 scanf("%d", &opcao);
@@ -136,7 +136,7 @@ int main()
             break;
 
         case 3:
-            for (int x = 0; x <= nProdutos; x++)
+            for (int x = 0; x < nProdutos; x++)
             {
                 printf("%s", industria[x].produto.detalhamento);
                 printf("%s", industria[x].produto.dataCadastro);
@@ -146,14 +146,14 @@ int main()
             break;
 
         case 4:
-            for (int x = 0; x <= nCliente; x++)
+            for (int x = 0; x < nCliente; x++)
             {
                 printf("%s", cliente[x].nome);
                 printf("%d", cliente[x].idade);
                 printf("%s", cliente[x].email);
                 printf("%d", cliente[x].telefone);
-                printf("%d", cliente[x].endereco);
-                printf("%d", cliente[x].UF);
+                printf("%s", cliente[x].endereco);
+                printf("%s", cliente[x].UF);
                 printf("%.2f", cliente[x].compra);
                 printf("\n");
             }
@@ -166,8 +166,8 @@ int main()
                 printf("%s", industria[x].endEletronico);
                 printf("%s", industria[x].email);
                 printf("%d", industria[x].telefone);
-                printf("%d", industria[x].endereco);
-                printf("%d", industria[x].UF);
+                printf("%s", industria[x].endereco);
+                printf("%s", industria[x].UF);
                 printf("\n");
             }
             break;
