@@ -243,9 +243,6 @@ int main()
             }
             break;
 
-        case 11:
-            break;
-
         default:
             printf("Digite um numero valido!\n");
 
