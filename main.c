@@ -159,7 +159,7 @@ int main()
             break;
 
         case 5:
-             for (int x = 0; x <= nCliente; x++)
+             for (int x = 0; x <= nPrestador; x++)
             {
                 printf("%s",industria[x].nome);
                 printf("%s",industria[x].endEletronico);
