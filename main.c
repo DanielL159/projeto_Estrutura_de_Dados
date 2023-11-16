@@ -271,6 +271,6 @@ int main()
             }
         }
     } while (opcao != 11);
-        printf("Programa encerrado")
+        printf("Programa encerrado"); 
     return 0;
 }
