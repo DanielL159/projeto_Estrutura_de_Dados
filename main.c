@@ -185,7 +185,27 @@ int main()
             break;
 
         case 9:
-            // Implemente a lógica para listar serviços em ordem crescente
+            for (int i = 0; i < nProdutos - 1; i++)
+            {
+                for (int j = 0; j < nProdutos - i - 1; j++)
+                {
+                    if (strcmp(industria[j].produto.detalhamento, industria[j + 1].produto.detalhamento) > 0)
+                    {
+                        strcpy(tmps, industria[j].produto.detalhamento);
+                        strcpy(industria[j].produto.detalhamento, industria[j + 1].produto.detalhamento);
+                        strcpy(industria[j + 1].produto.detalhamento, tmps);
+
+                        tmpi = industria[j].produto.preco;
+                        industria[j].produto.preco= industria[j + 1].produto.preco;
+                        industria[j + 1].produto.preco = tmpi;
+
+                        strcpy(tmps, industria[j].produto.dataCadastro);
+                        strcpy(industria[j].produto.dataCadastro, industria[j + 1].produto.dataCadastro);
+                        strcpy(industria[j + 1].produto.dataCadastro, tmps);
+
+                    }
+                }
+            }
             break;
 
         case 10:
