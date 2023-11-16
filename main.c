@@ -135,15 +135,40 @@ int main()
             break;
 
         case 3:
-            // Implemente a lógica para listar tipos de serviços
+            for (int x = 0; x <= nProdutos; x++)
+            {
+                printf("%s", industria[x].produto.detalhamento);
+                printf("%s", industria[x].produto.dataCadastro);
+                printf("%.2f",industria[x].produto.preco);
+                printf("\n");
+            }
             break;
 
         case 4:
-            // Implemente a lógica para listar clientes
+            for (int x = 0; x <= nCliente; x++)
+            {
+                printf("%s",cliente[x].nome);
+                printf("%d",cliente[x].idade);
+                printf("%s",cliente[x].email);
+                printf("%d",cliente[x].telefone);
+                printf("%d",cliente[x].endereco);
+                printf("%d",cliente[x].UF);
+                printf("%.2f",cliente[x].compra);
+                printf("\n");
+            }
             break;
 
         case 5:
-            // Implemente a lógica para listar prestadores de serviço
+             for (int x = 0; x <= nCliente; x++)
+            {
+                printf("%s",industria[x].nome);
+                printf("%s",industria[x].endEletronico);
+                printf("%s",industria[x].email);
+                printf("%d",industria[x].telefone);
+                printf("%d",industria[x].endereco);
+                printf("%d",industria[x].UF);
+                printf("\n");
+            }
             break;
 
         case 6:

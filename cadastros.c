@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "biblioteca_2.h"
+#include "biblioteca.h"
 
 #define MAX_NOME 50
 #define MAX_EMAIL 50

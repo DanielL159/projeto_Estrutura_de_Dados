@@ -196,4 +196,6 @@ void cadastrarConsumidor(consumidor *comprador) {
     scanf("%d", &opcao);
     strcpy(comprador->UF, cadastrarUF(opcao));
 }
+
+
 #endif
