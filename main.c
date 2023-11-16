@@ -19,7 +19,7 @@ int main()
     int nProdutos = 0;
     prestador industria[100];
     consumidor cliente[100];
-    int opcao,tmpi;
+    int opcao, tmpi;
     int sair = 0;
 
     do
@@ -45,8 +45,7 @@ int main()
         case 1:
             do
             {
-                cadastrarPrestador(&industria[i],&nPrestador);
-                
+                cadastrarPrestador(&industria[i], &nPrestador);
 
                 printf("Deseja cadastrar um produto a empresa %s: (1)SIM (0)NAO", industria[i].produto.detalhamento);
                 scanf("%d", &opcao);
@@ -88,12 +87,11 @@ int main()
             sair = 0;
             do
             {
-                cadastrarConsumidor(&cliente[i],&nCliente);
-                
+                cadastrarConsumidor(&cliente[i], &nCliente);
 
                 printf("Deseja cadastrar uma compra ao cliente a empresa %s: (1)SIM (0)NAO", cliente[i].nome);
                 scanf("%d", &opcao);
- 
+
                 if (opcao == 1)
                 {
                     do
@@ -148,28 +146,30 @@ int main()
         case 4:
             for (int x = 0; x < nCliente; x++)
             {
-                printf("%s\n", cliente[x].nome);
-                printf("%d\n", cliente[x].idade);
-                printf("%s\n", cliente[x].email);
-                printf("%d\n", cliente[x].telefone);
-                printf("%s\n", cliente[x].endereco);
-                printf("%s\n", cliente[x].UF);
-                printf("%.2f\n", cliente[x].compra);
-                printf("\n");
+                printf("Nome do Cliente: %s\n", cliente[x].nome);
+                printf("Idade do Cliente:  %d\n", cliente[x].idade);
+                printf("Email do Cliente: %s\n", cliente[x].email);
+                printf("Telefone do cliente: %d\n", cliente[x].telefone);
+                printf("Endereco do cliente: %s\n", cliente[x].endereco);
+                printf("UF do cliente%s\n", cliente[x].UF);
+                if (cliente[x].compra != 0)
+                {
+                    printf("Valor total da Compra do cliente: %.2f\n", cliente[x].compra);
+                }
+                printf(" \n");
             }
             break;
 
         case 5:
             for (int x = 0; x < nPrestador; x++)
             {
-                printf("%s\n", industria[x].nome);
-                printf("%s\n", industria[x].endEletronico);
-                printf("%s\n", industria[x].email);
-                printf("%d\n", industria[x].telefone);
-                printf("%s\n", industria[x].endereco);
-                printf("%s\n", industria[x].UF);
+                printf("Industria: %s\n", industria[x].nome);
+                printf("Endereco endereco eletronico: %s\n", industria[x].endEletronico);
+                printf("Email da industria: %s\n", industria[x].email);
+                printf("Telefone da Industria: %d\n", industria[x].telefone);
+                printf("Endereco da industria: %s\n", industria[x].endereco);
+                printf("UF da industria: %s\n", industria[x].UF);
                 printf("\n\n");
-
             }
             break;
 
@@ -197,13 +197,12 @@ int main()
                         strcpy(industria[j + 1].produto.detalhamento, tmps);
 
                         tmpi = industria[j].produto.preco;
-                        industria[j].produto.preco= industria[j + 1].produto.preco;
+                        industria[j].produto.preco = industria[j + 1].produto.preco;
                         industria[j + 1].produto.preco = tmpi;
 
                         strcpy(tmps, industria[j].produto.dataCadastro);
                         strcpy(industria[j].produto.dataCadastro, industria[j + 1].produto.dataCadastro);
                         strcpy(industria[j + 1].produto.dataCadastro, tmps);
-
                     }
                 }
             }
@@ -221,7 +220,7 @@ int main()
                         strcpy(cliente[j + 1].nome, tmps);
 
                         tmpi = cliente[j].idade;
-                        cliente[j].idade= cliente[j + 1].idade;
+                        cliente[j].idade = cliente[j + 1].idade;
                         cliente[j + 1].idade = tmpi;
 
                         strcpy(tmps, cliente[j].email);
@@ -229,7 +228,7 @@ int main()
                         strcpy(cliente[j + 1].email, tmps);
 
                         tmpi = cliente[j].telefone;
-                        cliente[j].telefone= cliente[j + 1].telefone;
+                        cliente[j].telefone = cliente[j + 1].telefone;
                         cliente[j + 1].telefone = tmpi;
 
                         strcpy(tmps, cliente[j].endereco);
