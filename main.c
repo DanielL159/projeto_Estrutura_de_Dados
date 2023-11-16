@@ -11,6 +11,7 @@
 
 int main()
 {
+    char tmps[50];
     char compras[MAX_DETALHAMENTOSERV];
     int i = 0, x = 0;
     int nPrestador = 0;
@@ -18,7 +19,7 @@ int main()
     int nProdutos = 0;
     prestador industria[100];
     consumidor cliente[100];
-    int opcao;
+    int opcao,tmpi;
     int sair = 0;
 
     do
@@ -115,9 +116,9 @@ int main()
                         scanf("%d", sair);
                         if (sair == 0)
                         {
-                            printf("Total da compra: %.2f",cliente[i].compra);
+                            printf("Total da compra: %.2f", cliente[i].compra);
                         }
-                        
+
                     } while (sair != 1);
 
                     do
@@ -139,7 +140,7 @@ int main()
             {
                 printf("%s", industria[x].produto.detalhamento);
                 printf("%s", industria[x].produto.dataCadastro);
-                printf("%.2f",industria[x].produto.preco);
+                printf("%.2f", industria[x].produto.preco);
                 printf("\n");
             }
             break;
@@ -147,26 +148,26 @@ int main()
         case 4:
             for (int x = 0; x <= nCliente; x++)
             {
-                printf("%s",cliente[x].nome);
-                printf("%d",cliente[x].idade);
-                printf("%s",cliente[x].email);
-                printf("%d",cliente[x].telefone);
-                printf("%d",cliente[x].endereco);
-                printf("%d",cliente[x].UF);
-                printf("%.2f",cliente[x].compra);
+                printf("%s", cliente[x].nome);
+                printf("%d", cliente[x].idade);
+                printf("%s", cliente[x].email);
+                printf("%d", cliente[x].telefone);
+                printf("%d", cliente[x].endereco);
+                printf("%d", cliente[x].UF);
+                printf("%.2f", cliente[x].compra);
                 printf("\n");
             }
             break;
 
         case 5:
-             for (int x = 0; x <= nPrestador; x++)
+            for (int x = 0; x <= nPrestador; x++)
             {
-                printf("%s",industria[x].nome);
-                printf("%s",industria[x].endEletronico);
-                printf("%s",industria[x].email);
-                printf("%d",industria[x].telefone);
-                printf("%d",industria[x].endereco);
-                printf("%d",industria[x].UF);
+                printf("%s", industria[x].nome);
+                printf("%s", industria[x].endEletronico);
+                printf("%s", industria[x].email);
+                printf("%d", industria[x].telefone);
+                printf("%d", industria[x].endereco);
+                printf("%d", industria[x].UF);
                 printf("\n");
             }
             break;
@@ -188,7 +189,38 @@ int main()
             break;
 
         case 10:
-            // Implemente a lógica para listar nomes de clientes em ordem crescente
+            for (int i = 0; i < nCliente - 1; i++)
+            {
+                for (int j = 0; j < nCliente - i - 1; j++)
+                {
+                    if (strcmp(cliente[j].nome, cliente[j + 1].nome) > 0)
+                    {
+                        strcpy(tmps, cliente[j].nome);
+                        strcpy(cliente[j].nome, cliente[j + 1].nome);
+                        strcpy(cliente[j + 1].nome, tmps);
+
+                        tmpi = cliente[j].idade;
+                        cliente[j].idade= cliente[j + 1].idade;
+                        cliente[j + 1].idade = tmpi;
+
+                        strcpy(tmps, cliente[j].email);
+                        strcpy(cliente[j].email, cliente[j + 1].email);
+                        strcpy(cliente[j + 1].email, tmps);
+
+                        tmpi = cliente[j].telefone;
+                        cliente[j].telefone= cliente[j + 1].telefone;
+                        cliente[j + 1].telefone = tmpi;
+
+                        strcpy(tmps, cliente[j].endereco);
+                        strcpy(cliente[j].endereco, cliente[j + 1].endereco);
+                        strcpy(cliente[j + 1].endereco, tmps);
+
+                        strcpy(tmps, cliente[j].UF);
+                        strcpy(cliente[j].UF, cliente[j + 1].UF);
+                        strcpy(cliente[j + 1].UF, tmps);
+                    }
+                }
+            }
             break;
 
         case 11:
@@ -197,9 +229,9 @@ int main()
         default:
             printf("Digite um numero valido!\n");
 
-            printf("\n\nPrograma encerrado!\n");            
+            printf("\n\nPrograma encerrado!\n");
         }
-    }while (opcao != 11);
+    } while (opcao != 11);
 
     return 0;
 }
