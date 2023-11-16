@@ -136,9 +136,9 @@ int main()
         case 3:
             for (int x = 0; x < nProdutos; x++)
             {
-                printf("%s", industria[x].produto.detalhamento);
-                printf("%s", industria[x].produto.dataCadastro);
-                printf("%.2f", industria[x].produto.preco);
+                printf("Produto: %s", industria[x].produto.detalhamento);
+                printf("Data de cadastro: %s", industria[x].produto.dataCadastro);
+                printf("Preco: %.2f", industria[x].produto.preco);
                 printf("\n");
             }
             break;
