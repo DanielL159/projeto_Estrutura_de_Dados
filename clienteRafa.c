@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "biblioteca_2.h"
+#include "biblioteca.h"
 #include <time.h>
 
 #define MAX_NOME 50
