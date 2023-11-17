@@ -43,10 +43,10 @@ int main()
         switch (opcao)
         {
         case 1:
-            i=0;
+            i = 0;
             do
             {
-                cadastrarPrestador(&industria[i], &nPrestador,nProdutos,&i);
+                cadastrarPrestador(&industria[i], &nPrestador, nProdutos, &i);
 
                 do
                 {
@@ -55,23 +55,21 @@ int main()
                     scanf("%d", &sair);
                 } while (sair < 0 || sair > 1);
 
-                
             } while (sair != 0);
             break;
 
         case 2:
             /*Cadastrar Cliente ou/e compra*/
             sair = 0;
-            i=0;
+            i = 0;
             do
             {
-                cadastrarConsumidor(&cliente[i], &nCliente,industria,nProdutos,&i);
+                cadastrarConsumidor(&cliente[i], &nCliente, industria, nProdutos, &i);
                 do
                 {
                     printf("Deseja cadastrar mais algum cliente: (1)Sim (0)Nao");
                     scanf("%d", &sair);
                 } while (sair < 0 || sair > 1);
-
 
             } while (sair != 0);
             break;
@@ -80,10 +78,7 @@ int main()
             /*Listar tipos de servicos*/
             for (int x = 0; x < nProdutos; x++)
             {
-                printf("Produto: %s", industria[x].produto.detalhamento);
-                printf("Data de cadastro: %s", industria[x].produto.dataCadastro);
-                printf("Preco: %.2f", industria[x].produto.preco);
-                printf("\n");
+                listarServico(&industria[x]);
             }
             break;
 
@@ -92,17 +87,7 @@ int main()
             printf("nCLiente => %d", nCliente);
             for (int x = 0; x < nCliente; x++)
             {
-                printf("Nome do Cliente: %s\n", cliente[x].nome);
-                printf("Idade do Cliente:  %d\n", cliente[x].idade);
-                printf("Email do Cliente: %s\n", cliente[x].email);
-                printf("Telefone do cliente: %d\n", cliente[x].telefone);
-                printf("Endereco do cliente: %s\n", cliente[x].endereco);
-                printf("UF do cliente%s\n", cliente[x].UF);
-                if (cliente[x].compra != 0)
-                {
-                    printf("Valor total da Compra do cliente: %.2f\n", cliente[x].compra);
-                }
-                printf(" \n");
+                listarCliente(&cliente[x]);
             }
             break;
 
@@ -110,13 +95,7 @@ int main()
             /*Listar prestadores de servico*/
             for (int x = 0; x < nPrestador; x++)
             {
-                printf("Industria: %s\n", industria[x].nome);
-                printf("Endereco endereco eletronico: %s\n", industria[x].endEletronico);
-                printf("Email da industria: %s\n", industria[x].email);
-                printf("Telefone da Industria: %d\n", industria[x].telefone);
-                printf("Endereco da industria: %s\n", industria[x].endereco);
-                printf("UF da industria: %s\n", industria[x].UF);
-                printf("\n\n");
+                listarPrestador(&industria[x]);
             }
             break;
 
@@ -157,7 +136,23 @@ int main()
             break;
 
         case 7:
-            // Implemente a lógica para listar prestadores de serviÃ§o de tipo específico
+            printf("\nDigite o tipo de serviço que deseja buscar: ");
+            scanf("%s", tmps);
+
+            printf("\nPrestadores de serviço do tipo %s:\n", tmps);
+            for (x = 0; x < nPrestador; x++)
+            {
+                if (strcmp(tmps, industria[x].produto.detalhamento) == 0)
+                {
+                    printf("Nome da Empresa: %s\n", industria[x].nome);
+                    printf("Endereco Eletronico: %s\n", industria[x].endEletronico);
+                    printf("Email: %s\n", industria[x].email);
+                    printf("Telefone: %d\n", industria[x].telefone);
+                    printf("Endereco: %s\n", industria[x].endereco);
+                    printf("UF: %s\n", industria[x].UF);
+                    printf("\n");
+                }
+            }
             break;
 
         case 8:
