@@ -46,7 +46,7 @@ int main()
             i = 0;
             do
             {
-                cadastrarPrestador(&industria[i], &nPrestador, nProdutos, &i);
+                cadastrarPrestador(&industria[i], &nPrestador, &nProdutos, &i);
 
                 do
                 {
@@ -198,29 +198,7 @@ int main()
                 {
                     if (strcmp(cliente[j].nome, cliente[j + 1].nome) > 0)
                     {
-                        strcpy(tmps, cliente[j].nome);
-                        strcpy(cliente[j].nome, cliente[j + 1].nome);
-                        strcpy(cliente[j + 1].nome, tmps);
-
-                        tmpi = cliente[j].idade;
-                        cliente[j].idade = cliente[j + 1].idade;
-                        cliente[j + 1].idade = tmpi;
-
-                        strcpy(tmps, cliente[j].email);
-                        strcpy(cliente[j].email, cliente[j + 1].email);
-                        strcpy(cliente[j + 1].email, tmps);
-
-                        tmpi = cliente[j].telefone;
-                        cliente[j].telefone = cliente[j + 1].telefone;
-                        cliente[j + 1].telefone = tmpi;
-
-                        strcpy(tmps, cliente[j].endereco);
-                        strcpy(cliente[j].endereco, cliente[j + 1].endereco);
-                        strcpy(cliente[j + 1].endereco, tmps);
-
-                        strcpy(tmps, cliente[j].UF);
-                        strcpy(cliente[j].UF, cliente[j + 1].UF);
-                        strcpy(cliente[j + 1].UF, tmps);
+                         listaClienteCrescente(&cliente[j]);
                     }
                 }
             }

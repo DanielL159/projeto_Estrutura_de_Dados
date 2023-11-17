@@ -135,15 +135,15 @@ void cadastrarPrestador(prestador *industria, int *nPrestador, int *nProdutos, i
 
     printf("Prestador\n____________\n");
     printf("\nNOME: ");
-    scanf("%s", (*industria).nome);
+    scanf("%s", &(*industria).nome);
     fflush(stdin);
 
     printf("ENDERECO ELETRONICO: ");
-    scanf("%s", (*industria).endEletronico);
+    scanf("%s", &(*industria).endEletronico);
     fflush(stdin);
 
     printf("E-MAIL: ");
-    scanf("%s", (*industria).email);
+    scanf("%s", &(*industria).email);
     fflush(stdin);
 
     printf("TELEFONE: ");
@@ -172,7 +172,7 @@ void cadastrarPrestador(prestador *industria, int *nPrestador, int *nProdutos, i
     if (opcao == 1)
     {
         printf("Qual o nome do produto:");
-        scanf("%s", industria->produto.detalhamento);
+        scanf("%s", &industria->produto.detalhamento);
 
         printf("Qual o preco do produto: ");
         scanf("%f", &industria->produto.preco);
@@ -293,5 +293,35 @@ void listarPrestador(prestador *industria)
     printf("Endereco da industria: %s\n", industria->endereco);
     printf("UF da industria: %s\n", industria->UF);
     printf("\n\n");
+}
+
+void listaClienteCrescente(consumidor *comprador) {
+    char tmps[MAX_NOME];
+    int tmpi;
+
+    // Troca de informações entre o comprador atual e o próximo
+      strcpy(tmps, comprador->nome);
+    strcpy(comprador->nome, (comprador + 1)->nome);
+    strcpy((comprador + 1)->nome, tmps);
+
+    tmpi = comprador->idade;
+    comprador->idade = (comprador + 1)->idade;
+    (comprador + 1)->idade = tmpi;
+
+    strcpy(tmps, comprador->email);
+    strcpy(comprador->email, (comprador + 1)->email);
+    strcpy((comprador + 1)->email, tmps);
+
+    tmpi = comprador->telefone;
+    comprador->telefone = (comprador + 1)->telefone;
+    (comprador + 1)->telefone = tmpi;
+
+    strcpy(tmps, comprador->endereco);
+    strcpy(comprador->endereco, (comprador + 1)->endereco);
+    strcpy((comprador + 1)->endereco, tmps);
+
+    strcpy(tmps, comprador->UF);
+    strcpy(comprador->UF, (comprador + 1)->UF);
+    strcpy((comprador + 1)->UF, tmps);
 }
 #endif
