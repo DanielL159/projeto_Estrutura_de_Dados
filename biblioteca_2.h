@@ -124,7 +124,7 @@ char *cadastrarUF(int opcao)
         strcpy(UF, "TO");
         break;
     default:
-        printf("OpÃ§Ã£o invÃ¡lida. Digite um nÃºmero de 1 a 26.\n");
+        printf("Opção inválida. Digite um número de 1 a 26.\n");
     }
     return UF;
 }
@@ -166,7 +166,7 @@ void cadastrarPrestador(prestador *industria, int *nPrestador, int *nProdutos, i
     strcpy((*industria).UF, cadastrarUF(opcao));
     (*nPrestador)++;
 
-    printf("Deseja cadastrar um produto a empresa %s: (1)SIM (0)NAO", industria->produto.detalhamento);
+    printf("Deseja cadastrar um produto a empresa %s: (1)SIM (0)NAO: ", industria->produto.detalhamento);
     scanf("%d", &opcao);
 
     if (opcao == 1)
@@ -230,7 +230,7 @@ void cadastrarConsumidor(consumidor *comprador, int *nCliente, prestador industr
     strcpy(comprador->UF, cadastrarUF(opcao));
     (*nCliente)++;
 
-    printf("Deseja cadastrar uma compra ao cliente a empresa %s: (1)SIM (0)NAO", comprador->nome);
+    printf("Deseja cadastrar uma compra ao cliente a empresa %s: (1)SIM (0)NAO: ", comprador->nome);
     scanf("%d", &opcao);
 
     if (opcao == 1)
@@ -238,7 +238,7 @@ void cadastrarConsumidor(consumidor *comprador, int *nCliente, prestador industr
         do
         {
             printf("O que o cliente deseja compra:");
-            for (int x = 0; x < nProdutos; x++)
+            for ( x = 0; x < nProdutos; x++)
             {
                 printf("%s\n", industria->produto.detalhamento);
             }
@@ -300,7 +300,7 @@ void listaClienteCrescente(consumidor *comprador)
     char tmps[MAX_NOME];
     int tmpi;
 
-    // Troca de informaÃ§Ãµes entre o comprador atual e o prÃ³ximo
+    // Troca de informações entre o comprador atual e o próximo
     strcpy(tmps, comprador->nome);
     strcpy(comprador->nome, (comprador + 1)->nome);
     strcpy((comprador + 1)->nome, tmps);
@@ -331,16 +331,34 @@ void listrServicoCrescente(prestador *industria)
     char tmps[MAX_NOME];
     int tmpi;
 
-    strcpy(tmps, (*industria).produto.detalhamento);
-    strcpy((*industria).produto.detalhamento, (*industria+1).produto.detalhamento);
-    strcpy((*industria+1).produto.detalhamento, tmps);
+    strcpy(tmps, industria->produto.detalhamento);
+    strcpy(industria->produto.detalhamento, (industria+1)->produto.detalhamento);
+    strcpy((industria+1)->produto.detalhamento, tmps);
 
-    tmpi = (*industria).produto.preco;
-    (*industria).produto.preco = (*industria+1).produto.preco;
-    (*industria+1).produto.preco = tmpi;
+    tmpi = industria->produto.preco;
+    industria->produto.preco = (industria+1)->produto.preco;
+    (industria+1)->produto.preco = tmpi;
 
-    strcpy(tmps, (*industria).produto.dataCadastro);
-    strcpy((*industria).produto.dataCadastro, (*industria+1).produto.dataCadastro);
-    strcpy((*industria+1).produto.dataCadastro, tmps);
+    strcpy(tmps, industria->produto.dataCadastro);
+    strcpy(industria->produto.dataCadastro, (industria+1)->produto.dataCadastro);
+    strcpy((industria+1)->produto.dataCadastro, tmps);
 }
+
+
+void listarPrestadoresPorTipo(prestador industria[], int nPrestador, const char tipoBuscado[]) {
+	int x;
+    printf("Prestadores de serviço do tipo %s:\n", tipoBuscado);
+    for ( x = 0; x < nPrestador; x++) {
+        if (strcmp(tipoBuscado, industria[x].produto.detalhamento) == 0) {
+            printf("Nome da Empresa: %s\n", industria[x].nome);
+            printf("Endereco Eletronico: %s\n", industria[x].endEletronico);
+            printf("Email: %s\n", industria[x].email);
+            printf("Telefone: %d\n", industria[x].telefone);
+            printf("Endereco: %s\n", industria[x].endereco);
+            printf("UF: %s\n", industria[x].UF);
+            printf("\n");
+        }
+    }
+}
+
 #endif
