@@ -24,7 +24,7 @@ int main()
 
     do
     {
-    	
+
         printf("\n\n********FARMACIA*********\n\n");
         printf("[1] Cadastrar prestador ou/e produto\n");
         printf("[2] Cadastrar Cliente ou/e compra\n");
@@ -44,6 +44,7 @@ int main()
         switch (opcao)
         {
         case 1:
+        /*Cadastrar prestador ou/e produto*/
             do
             {
                 cadastrarPrestador(&industria[i], &nPrestador);
@@ -84,6 +85,7 @@ int main()
             break;
 
         case 2:
+        /*Cadastrar Cliente ou/e compra*/
             sair = 0;
             do
             {
@@ -135,6 +137,7 @@ int main()
             break;
 
         case 3:
+        /*Listar tipos de servicos*/
             for (int x = 0; x < nProdutos; x++)
             {
                 printf("Produto: %s", industria[x].produto.detalhamento);
@@ -145,7 +148,8 @@ int main()
             break;
 
         case 4:
-        	printf("nCLiente => %d", nCliente);
+        /*Listar clientes*/
+            printf("nCLiente => %d", nCliente);
             for (int x = 0; x < nCliente; x++)
             {
                 printf("Nome do Cliente: %s\n", cliente[x].nome);
@@ -163,6 +167,7 @@ int main()
             break;
 
         case 5:
+        /*Listar prestadores de servico*/
             for (int x = 0; x < nPrestador; x++)
             {
                 printf("Industria: %s\n", industria[x].nome);
@@ -176,36 +181,39 @@ int main()
             break;
 
         case 6:
-        	// Implemente a lógica para listar clientes de estado específico
-        	printf("UNIDADE FEDERATIVA:\n\n");
-        	int idUf, qtdEncontrada = 0;
-    		printf("[1]--> (AC)Acre\t\t[2]--> (AL)Alagoas\t\t[3]--> (AP)Amapa\t\t[4]--> (AM)Amazonas\n"
-           "[5]--> (BA)Bahia\t[6]--> (CE)Ceara\t\t[7]--> (ES)Espirito Santo\t[8]--> (GO)Goias\n"
-           "[9]--> (MA)Maranhao\t[10]--> (MT)Mato Grosso\t\t[11]--> (MS)Mato Grosso do Sul\t[12]--> (MG)Minas Gerais\n"
-           "[13]--> (PA)Para\t[14]--> (PB)Paraiba\t\t[15]--> (PR)Parana\t\t[16]--> (PE)Pernambuco\n"
-           "[17]--> (PI)Piaui\t[18]--> (RJ)Rio de Janeiro\t[19]--> (RN)Rio Grande do Norte\t[20]--> (RS)Rio Grande do Sul\n"
-           "[21]--> (RO)Rondonia\t[22]--> (RR)Roraima\t\t[23]--> (SC)Santa Catarina\t[24]--> (SP)Sao Paulo\n"
-           "[25]--> (SE)Sergipe\t[26]--> (TO)Tocantins\n\nDIGITE UMA UF:");
-    		scanf("%d", &idUf);
-    		char uf[4];
-			strcpy(uf, cadastrarUF(idUf));
-			printf("\nClientes do estado (%s)", uf);
-        	for(x = 0; x < nCliente; x++){
-        		if(strcmp(uf, cliente[x].UF) == 0){
-        			printf("\n\nNome: %s\n", cliente[x].nome);
-                	printf("Idade:  %d\n", cliente[x].idade);
-                	printf("Email: %s\n", cliente[x].email);	
-               		printf("Telefone: %d\n", cliente[x].telefone);
-                	printf("Endereco: %s\n", cliente[x].endereco);
-                	printf("UF: %s", cliente[x].UF);
-                	qtdEncontrada++;
-        		}
-        	}
-        	printf("\n%d cliente(s) encontrado! ", qtdEncontrada);
-        	if(!qtdEncontrada){
-        		printf("Nao existem clientes cadastrados desse UF(%s)", uf);
-        	}
-            
+            // Implemente a lógica para listar clientes de estado específico
+            printf("UNIDADE FEDERATIVA:\n\n");
+            int idUf, qtdEncontrada = 0;
+            printf("[1]--> (AC)Acre\t\t[2]--> (AL)Alagoas\t\t[3]--> (AP)Amapa\t\t[4]--> (AM)Amazonas\n"
+                   "[5]--> (BA)Bahia\t[6]--> (CE)Ceara\t\t[7]--> (ES)Espirito Santo\t[8]--> (GO)Goias\n"
+                   "[9]--> (MA)Maranhao\t[10]--> (MT)Mato Grosso\t\t[11]--> (MS)Mato Grosso do Sul\t[12]--> (MG)Minas Gerais\n"
+                   "[13]--> (PA)Para\t[14]--> (PB)Paraiba\t\t[15]--> (PR)Parana\t\t[16]--> (PE)Pernambuco\n"
+                   "[17]--> (PI)Piaui\t[18]--> (RJ)Rio de Janeiro\t[19]--> (RN)Rio Grande do Norte\t[20]--> (RS)Rio Grande do Sul\n"
+                   "[21]--> (RO)Rondonia\t[22]--> (RR)Roraima\t\t[23]--> (SC)Santa Catarina\t[24]--> (SP)Sao Paulo\n"
+                   "[25]--> (SE)Sergipe\t[26]--> (TO)Tocantins\n\nDIGITE UMA UF:");
+            scanf("%d", &idUf);
+            char uf[4];
+            strcpy(uf, cadastrarUF(idUf));
+            printf("\nClientes do estado (%s)", uf);
+            for (x = 0; x < nCliente; x++)
+            {
+                if (strcmp(uf, cliente[x].UF) == 0)
+                {
+                    printf("\n\nNome: %s\n", cliente[x].nome);
+                    printf("Idade:  %d\n", cliente[x].idade);
+                    printf("Email: %s\n", cliente[x].email);
+                    printf("Telefone: %d\n", cliente[x].telefone);
+                    printf("Endereco: %s\n", cliente[x].endereco);
+                    printf("UF: %s", cliente[x].UF);
+                    qtdEncontrada++;
+                }
+            }
+            printf("\n%d cliente(s) encontrado! ", qtdEncontrada);
+            if (!qtdEncontrada)
+            {
+                printf("Nao existem clientes cadastrados desse UF(%s)", uf);
+            }
+
             break;
 
         case 7:
@@ -217,6 +225,7 @@ int main()
             break;
 
         case 9:
+        /*Listar servicos em ordem crescente*/
             for (int i = 0; i < nProdutos - 1; i++)
             {
                 for (int j = 0; j < nProdutos - i - 1; j++)
@@ -247,6 +256,7 @@ int main()
             break;
 
         case 10:
+        /*Listar nomes de clientes em ordem crescente*/
             for (int i = 0; i < nCliente - 1; i++)
             {
                 for (int j = 0; j < nCliente - i - 1; j++)
@@ -302,6 +312,6 @@ int main()
             }
         }
     } while (opcao != 11);
-        printf("Programa encerrado"); 
+    printf("Programa encerrado");
     return 0;
 }
