@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
 
 
 #define MAX_NOME 50
@@ -124,7 +126,7 @@ char *cadastrarUF(int opcao) {
     return UF;
 }
 
-void cadastrarPrestador(prestador *industria, int *nPrestador) {
+void cadastrarPrestador(prestador *industria, int *nPrestador,int *nProdutos,int *i) {
     int opcao = 0;
 
     printf("Prestador\n____________\n");
@@ -159,15 +161,40 @@ void cadastrarPrestador(prestador *industria, int *nPrestador) {
     scanf("%d", &opcao);
     strcpy((*industria).UF, cadastrarUF(opcao));
     (*nPrestador)++;
+
+    printf("Deseja cadastrar um produto a empresa %s: (1)SIM (0)NAO", industria->produto.detalhamento);
+    scanf("%d", &opcao);
+
+    if (opcao == 1)
+                {
+                    printf("Qual o nome do produto:");
+                    scanf("%s", industria->produto.detalhamento);
+
+                    printf("Qual o preco do produto: ");
+                    scanf("%f", &industria->produto.preco);
+
+                    time_t t;
+                    struct tm *infoTempo;
+
+                    time(&t);
+                    infoTempo = localtime(&t);
+
+                    strftime(industria->produto.dataCadastro, sizeof(industria->produto.dataCadastro), "%Y-%m-%d %H:%M:%S", infoTempo);
+                    printf("Data do cadastro %s\n", industria->produto.dataCadastro);
+                    (*nProdutos)++;
+                }
+             (*i)++;   
 }
 
-void cadastrarConsumidor(consumidor *comprador,int *nCliente ) {
-    int opcao;
+void cadastrarConsumidor(consumidor *comprador,int *nCliente ,prestador industria[100],int nProdutos,int *i) {
+    int opcao,x;
+    int sair = 0;
+    char compras[MAX_DETALHAMENTOSERV] ;
     comprador->compra =0;
 
     printf("Comprador\n__________\n");
     printf("\nNOME: ");
-    scanf("%s", comprador->nome);
+    scanf("%s", &comprador->nome);
     fflush(stdin);
 
     printf("IDADE: ");
@@ -175,7 +202,7 @@ void cadastrarConsumidor(consumidor *comprador,int *nCliente ) {
     fflush(stdin);
 
     printf("E-MAIL: ");
-    scanf("%s", comprador->email);
+    scanf("%s", &comprador->email);
     fflush(stdin);
 
     printf("TELEFONE: ");
@@ -197,6 +224,38 @@ void cadastrarConsumidor(consumidor *comprador,int *nCliente ) {
     scanf("%d", &opcao);
     strcpy(comprador->UF, cadastrarUF(opcao));
     (*nCliente)++;
+
+    printf("Deseja cadastrar uma compra ao cliente a empresa %s: (1)SIM (0)NAO", comprador->nome);
+                scanf("%d", &opcao);
+
+                if (opcao == 1)
+                {
+                    do
+                    {
+                        printf("O que o cliente deseja compra:");
+                        for (int x = 0; x < nProdutos; x++)
+                        {
+                            printf("%s\n", industria->produto.detalhamento);
+                        }
+                        scanf("%s", compras);
+                        for (x = 0; x < nProdutos; x++)
+                        {
+                            if (strcmp(compras, industria->produto.detalhamento) == 0)
+                            {
+                                comprador->compra += industria->produto.preco;
+                            }
+                        }
+
+                        printf("O cliente deseja compra mais algo ?(1)SIM (0)NAO");
+                        scanf("%d", &sair);
+                        if (sair == 0)
+                        {
+                            printf("Total da compra: %.2f\n", comprador->compra);
+                        }
+
+                    } while (sair != 1);
+                }
+                (*i)++;
 }
 
 

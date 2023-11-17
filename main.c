@@ -12,7 +12,6 @@
 int main()
 {
     char tmps[50];
-    char compras[MAX_DETALHAMENTOSERV];
     int i = 0, x = 0;
     int nPrestador = 0;
     int nCliente = 0;
@@ -44,100 +43,41 @@ int main()
         switch (opcao)
         {
         case 1:
-        /*Cadastrar prestador ou/e produto*/
+            i=0;
             do
             {
-                cadastrarPrestador(&industria[i], &nPrestador);
-
-                printf("Deseja cadastrar um produto a empresa %s: (1)SIM (0)NAO", industria[i].produto.detalhamento);
-                scanf("%d", &opcao);
-
-                if (opcao == 1)
-                {
-                    printf("Qual o nome do produto:");
-                    scanf("%s", industria[i].produto.detalhamento);
-
-                    printf("Qual o preco do produto: ");
-                    scanf("%f", &industria[i].produto.preco);
-
-                    time_t t;
-                    struct tm *infoTempo;
-
-                    time(&t);
-                    infoTempo = localtime(&t);
-
-                    strftime(industria[i].produto.dataCadastro, sizeof(industria[i].produto.dataCadastro), "%Y-%m-%d %H:%M:%S", infoTempo);
-                    printf("Data do cadastro %s", industria[i].produto.dataCadastro);
-                    nProdutos++;
-                }
+                cadastrarPrestador(&industria[i], &nPrestador,nProdutos,&i);
 
                 do
                 {
                     printf("Deseja cadastrar mais alguma empresa: (1)Sim (0)Nao");
+                    fflush(stdin);
                     scanf("%d", &sair);
                 } while (sair < 0 || sair > 1);
 
-                if (sair == 1)
-                {
-                    i++;
-                }
+                
             } while (sair != 0);
             break;
 
         case 2:
-        /*Cadastrar Cliente ou/e compra*/
+            /*Cadastrar Cliente ou/e compra*/
             sair = 0;
+            i=0;
             do
             {
-                cadastrarConsumidor(&cliente[i], &nCliente);
-                i++;
-
-                printf("Deseja cadastrar uma compra ao cliente a empresa %s: (1)SIM (0)NAO", cliente[i].nome);
-                scanf("%d", &opcao);
-
-                if (opcao == 1)
+                cadastrarConsumidor(&cliente[i], &nCliente,industria,nProdutos,&i);
+                do
                 {
-                    do
-                    {
-                        printf("O que o cliente deseja compro :");
-                        for (int x = 0; x <= nProdutos; x++)
-                        {
-                            printf("%s", industria[x].produto.detalhamento);
-                        }
-                        scanf("%s", compras);
-                        for (x = 0; x < nProdutos; x++)
-                        {
-                            if (strcmp(compras, industria[x].produto.detalhamento) == 0)
-                            {
-                                cliente[i].compra += industria[x].produto.preco;
-                            }
-                        }
+                    printf("Deseja cadastrar mais algum cliente: (1)Sim (0)Nao");
+                    scanf("%d", &sair);
+                } while (sair < 0 || sair > 1);
 
-                        printf("O cliente deseja compra mais algo ?(1)SIM (0)NAO");
-                        scanf("%d", sair);
-                        if (sair == 0)
-                        {
-                            printf("Total da compra: %.2f", cliente[i].compra);
-                        }
 
-                    } while (sair != 1);
-
-                    do
-                    {
-                        printf("Deseja cadastrar mais algum cliente: (1)Sim (0)Nao");
-                        scanf("%d", &sair);
-                    } while (sair < 0 || sair > 1);
-
-                    if (sair == 1)
-                    {
-                        i++;
-                    }
-                }
             } while (sair != 0);
             break;
 
         case 3:
-        /*Listar tipos de servicos*/
+            /*Listar tipos de servicos*/
             for (int x = 0; x < nProdutos; x++)
             {
                 printf("Produto: %s", industria[x].produto.detalhamento);
@@ -148,7 +88,7 @@ int main()
             break;
 
         case 4:
-        /*Listar clientes*/
+            /*Listar clientes*/
             printf("nCLiente => %d", nCliente);
             for (int x = 0; x < nCliente; x++)
             {
@@ -167,7 +107,7 @@ int main()
             break;
 
         case 5:
-        /*Listar prestadores de servico*/
+            /*Listar prestadores de servico*/
             for (int x = 0; x < nPrestador; x++)
             {
                 printf("Industria: %s\n", industria[x].nome);
@@ -225,7 +165,7 @@ int main()
             break;
 
         case 9:
-        /*Listar servicos em ordem crescente*/
+            /*Listar servicos em ordem crescente*/
             for (int i = 0; i < nProdutos - 1; i++)
             {
                 for (int j = 0; j < nProdutos - i - 1; j++)
@@ -256,7 +196,7 @@ int main()
             break;
 
         case 10:
-        /*Listar nomes de clientes em ordem crescente*/
+            /*Listar nomes de clientes em ordem crescente*/
             for (int i = 0; i < nCliente - 1; i++)
             {
                 for (int j = 0; j < nCliente - i - 1; j++)
