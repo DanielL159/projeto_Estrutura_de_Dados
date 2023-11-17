@@ -167,26 +167,13 @@ int main()
                 {
                     if (strcmp(industria[j].produto.detalhamento, industria[j + 1].produto.detalhamento) > 0)
                     {
-                        strcpy(tmps, industria[j].produto.detalhamento);
-                        strcpy(industria[j].produto.detalhamento, industria[j + 1].produto.detalhamento);
-                        strcpy(industria[j + 1].produto.detalhamento, tmps);
-
-                        tmpi = industria[j].produto.preco;
-                        industria[j].produto.preco = industria[j + 1].produto.preco;
-                        industria[j + 1].produto.preco = tmpi;
-
-                        strcpy(tmps, industria[j].produto.dataCadastro);
-                        strcpy(industria[j].produto.dataCadastro, industria[j + 1].produto.dataCadastro);
-                        strcpy(industria[j + 1].produto.dataCadastro, tmps);
+                         listrServicoCrescente(&industria[j]);
                     }
                 }
             }
             for (int x = 0; x < nProdutos; x++)
             {
-                printf("Produto: %s", industria[x].produto.detalhamento);
-                printf("Data de cadastro: %s", industria[x].produto.dataCadastro);
-                printf("Preco: %.2f", industria[x].produto.preco);
-                printf("\n");
+                listarServico(&industria[x]);
             }
             break;
 
@@ -204,17 +191,7 @@ int main()
             }
             for (int x = 0; x < nCliente; x++)
             {
-                printf("Nome do Cliente: %s\n", cliente[x].nome);
-                printf("Idade do Cliente:  %d\n", cliente[x].idade);
-                printf("Email do Cliente: %s\n", cliente[x].email);
-                printf("Telefone do cliente: %d\n", cliente[x].telefone);
-                printf("Endereco do cliente: %s\n", cliente[x].endereco);
-                printf("UF do cliente%s\n", cliente[x].UF);
-                if (cliente[x].compra != 0)
-                {
-                    printf("Valor total da Compra do cliente: %.2f\n", cliente[x].compra);
-                }
-                printf(" \n");
+               listarCliente(&cliente[x]);
             }
             break;
 

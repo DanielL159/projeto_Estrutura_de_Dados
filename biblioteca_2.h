@@ -295,12 +295,13 @@ void listarPrestador(prestador *industria)
     printf("\n\n");
 }
 
-void listaClienteCrescente(consumidor *comprador) {
+void listaClienteCrescente(consumidor *comprador)
+{
     char tmps[MAX_NOME];
     int tmpi;
 
     // Troca de informações entre o comprador atual e o próximo
-      strcpy(tmps, comprador->nome);
+    strcpy(tmps, comprador->nome);
     strcpy(comprador->nome, (comprador + 1)->nome);
     strcpy((comprador + 1)->nome, tmps);
 
@@ -323,5 +324,23 @@ void listaClienteCrescente(consumidor *comprador) {
     strcpy(tmps, comprador->UF);
     strcpy(comprador->UF, (comprador + 1)->UF);
     strcpy((comprador + 1)->UF, tmps);
+}
+
+void listrServicoCrescente(prestador *industria)
+{
+    char tmps[MAX_NOME];
+    int tmpi;
+
+    strcpy(tmps, (*industria).produto.detalhamento);
+    strcpy((*industria).produto.detalhamento, (*industria+1).produto.detalhamento);
+    strcpy((*industria+1).produto.detalhamento, tmps);
+
+    tmpi = (*industria).produto.preco;
+    (*industria).produto.preco = (*industria+1).produto.preco;
+    (*industria+1).produto.preco = tmpi;
+
+    strcpy(tmps, (*industria).produto.dataCadastro);
+    strcpy((*industria).produto.dataCadastro, (*industria+1).produto.dataCadastro);
+    strcpy((*industria+1).produto.dataCadastro, tmps);
 }
 #endif
