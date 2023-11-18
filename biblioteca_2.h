@@ -258,7 +258,7 @@ void cadastrarConsumidor(consumidor *comprador, int *nCliente, prestador industr
                 printf("Total da compra: %.2f\n", comprador->compra);
             }
 
-        } while (sair != 1);
+        } while (sair != 0);
     }
     (*i)++;
 }

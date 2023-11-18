@@ -18,7 +18,7 @@ int main()
     int nProdutos = 0;
     prestador industria[100];
     consumidor cliente[100];
-   
+    int opcao;
     int sair = 0;
 
     do
