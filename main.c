@@ -98,45 +98,14 @@ int main()
             break;
 
         case 6:
-            // Implemente a lógica para listar clientes de estado específico
-            printf("UNIDADE FEDERATIVA:\n\n");
-            int idUf, qtdEncontrada = 0;
-            printf("[1]--> (AC)Acre\t\t[2]--> (AL)Alagoas\t\t[3]--> (AP)Amapa\t\t[4]--> (AM)Amazonas\n"
-                   "[5]--> (BA)Bahia\t[6]--> (CE)Ceara\t\t[7]--> (ES)Espirito Santo\t[8]--> (GO)Goias\n"
-                   "[9]--> (MA)Maranhao\t[10]--> (MT)Mato Grosso\t\t[11]--> (MS)Mato Grosso do Sul\t[12]--> (MG)Minas Gerais\n"
-                   "[13]--> (PA)Para\t[14]--> (PB)Paraiba\t\t[15]--> (PR)Parana\t\t[16]--> (PE)Pernambuco\n"
-                   "[17]--> (PI)Piaui\t[18]--> (RJ)Rio de Janeiro\t[19]--> (RN)Rio Grande do Norte\t[20]--> (RS)Rio Grande do Sul\n"
-                   "[21]--> (RO)Rondonia\t[22]--> (RR)Roraima\t\t[23]--> (SC)Santa Catarina\t[24]--> (SP)Sao Paulo\n"
-                   "[25]--> (SE)Sergipe\t[26]--> (TO)Tocantins\n\nDIGITE UMA UF:");
-            scanf("%d", &idUf);
-            char uf[4];
-            strcpy(uf, cadastrarUF(idUf));
-            printf("\nClientes do estado (%s)", uf);
-            for (x = 0; x < nCliente; x++)
-            {
-                if (strcmp(uf, cliente[x].UF) == 0)
-                {
-                    printf("\n\nNome: %s\n", cliente[x].nome);
-                    printf("Idade:  %d\n", cliente[x].idade);
-                    printf("Email: %s\n", cliente[x].email);
-                    printf("Telefone: %d\n", cliente[x].telefone);
-                    printf("Endereco: %s\n", cliente[x].endereco);
-                    printf("UF: %s", cliente[x].UF);
-                    qtdEncontrada++;
-                }
-            }
-            printf("\n%d cliente(s) encontrado! ", qtdEncontrada);
-            if (!qtdEncontrada)
-            {
-                printf("Nao existem clientes cadastrados desse UF(%s)", uf);
-            }
-
+            // Implemente a lógica para listar clientes de estado especÃ­fico
+            listarClientesEstadoEspecifico(cliente, nCliente);
             break;
 
             
     	case 7:
     		//Listar prestadores de serviço por tipo 
-        		printf("Digite o tipo de serviço que deseja buscar: ");
+        		printf("Digite o tipo de serviÃ§o que deseja buscar: ");
         		scanf("%s", tmps);
         		
         		listarPrestadoresPorTipo(industria, nPrestador, tmps);
@@ -144,7 +113,7 @@ int main()
         	break;
         	 		
         case 8:
-            // Implemente a lógica para encontrar o estado com o serviço mais caro no país
+            // Implemente a lógica para encontrar o estado com o serviço mais caro no paÃ­s
             estadoServicoMaisCaro(industria, nPrestador);
             break;
 
