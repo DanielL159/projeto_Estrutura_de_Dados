@@ -326,23 +326,26 @@ void listaClienteCrescente(consumidor *comprador)
     strcpy((comprador + 1)->UF, tmps);
 }
 
-void listrServicoCrescente(prestador *industria)
-{
+void listrServicoCrescente(prestador *industria) {
     char tmps[MAX_NOME];
     int tmpi;
 
+    // Troca de detalhamento
     strcpy(tmps, industria->produto.detalhamento);
-    strcpy(industria->produto.detalhamento, (industria+1)->produto.detalhamento);
-    strcpy((industria+1)->produto.detalhamento, tmps);
+    strcpy(industria->produto.detalhamento, (industria + 1)->produto.detalhamento);
+    strcpy((industria + 1)->produto.detalhamento, tmps);
 
+    // Troca de preço
     tmpi = industria->produto.preco;
-    industria->produto.preco = (industria+1)->produto.preco;
-    (industria+1)->produto.preco = tmpi;
+    industria->produto.preco = (industria + 1)->produto.preco;
+    (industria + 1)->produto.preco = tmpi;
 
+    // Troca de data de cadastro
     strcpy(tmps, industria->produto.dataCadastro);
-    strcpy(industria->produto.dataCadastro, (industria+1)->produto.dataCadastro);
-    strcpy((industria+1)->produto.dataCadastro, tmps);
+    strcpy(industria->produto.dataCadastro, (industria + 1)->produto.dataCadastro);
+    strcpy((industria + 1)->produto.dataCadastro, tmps);
 }
+
 
 
 void listarPrestadoresPorTipo(prestador industria[], int nPrestador, const char tipoBuscado[]) {

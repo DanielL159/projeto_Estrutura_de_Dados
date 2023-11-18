@@ -18,7 +18,7 @@ int main()
     int nProdutos = 0;
     prestador industria[100];
     consumidor cliente[100];
-    int opcao, tmpi;
+   
     int sair = 0;
 
     do
@@ -132,6 +132,7 @@ int main()
             }
 
             break;
+
             
     	case 7:
     		//Listar prestadores de serviço por tipo 
