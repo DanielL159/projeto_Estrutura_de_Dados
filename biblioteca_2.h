@@ -124,7 +124,7 @@ char *cadastrarUF(int opcao)
         strcpy(UF, "TO");
         break;
     default:
-        printf("Opção inválida. Digite um número de 1 a 26.\n");
+        printf("OpÃ§Ã£o invÃ¡lida. Digite um nÃºmero de 1 a 26.\n");
     }
     return UF;
 }
@@ -237,7 +237,7 @@ void cadastrarConsumidor(consumidor *comprador, int *nCliente, prestador industr
     {
         do
         {
-            printf("O que o cliente deseja compra:");
+            printf("O que o cliente deseja comprar:");
             for ( x = 0; x < nProdutos; x++)
             {
                 printf("%s\n", industria->produto.detalhamento);
@@ -300,7 +300,7 @@ void listaClienteCrescente(consumidor *comprador)
     char tmps[MAX_NOME];
     int tmpi;
 
-    // Troca de informações entre o comprador atual e o próximo
+    // Troca de informaÃ§Ãµes entre o comprador atual e o prÃ³ximo
     strcpy(tmps, comprador->nome);
     strcpy(comprador->nome, (comprador + 1)->nome);
     strcpy((comprador + 1)->nome, tmps);
@@ -347,7 +347,7 @@ void listrServicoCrescente(prestador *industria)
 
 void listarPrestadoresPorTipo(prestador industria[], int nPrestador, const char tipoBuscado[]) {
 	int x;
-    printf("Prestadores de serviço do tipo %s:\n", tipoBuscado);
+    printf("Prestadores de serviÃ§o do tipo %s:\n", tipoBuscado);
     for ( x = 0; x < nPrestador; x++) {
         if (strcmp(tipoBuscado, industria[x].produto.detalhamento) == 0) {
             printf("Nome da Empresa: %s\n", industria[x].nome);
@@ -359,6 +359,27 @@ void listarPrestadoresPorTipo(prestador industria[], int nPrestador, const char 
             printf("\n");
         }
     }
+}
+
+void estadoServicoMaisCaro(prestador industria[], int qtdIndustrias){
+	int i, encontrado = 0, posicao = 0;
+	if(qtdIndustrias > 0){
+		for(i = 0; i < qtdIndustrias; i++){
+			if(industria[i].produto.preco > industria[posicao].produto.preco && industria[i].produto.preco != 0){
+				posicao = i;
+				encontrado = 1;
+			}
+		}
+		if(encontrado){
+			printf("\nEstado e industria do servico mais caro do pais!");
+			printf("\nNome da industria: %s (%s)\n", industria[posicao].nome ,industria[posicao].UF);
+			printf("Servico mais caro: \nNome: %s\nPreco: R$%.2f", industria[posicao].produto.detalhamento, industria[posicao].produto.preco);
+		}else{
+			printf("Existem prestadores de servicos, mas nenhum produto vinculado a ele");
+		}
+	}else{
+		printf("\nNenhum prestador de servico cadastrado");
+	}
 }
 
 #endif

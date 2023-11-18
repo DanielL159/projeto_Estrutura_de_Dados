@@ -46,7 +46,7 @@ int main()
             i = 0;
             do
             {
-                cadastrarPrestador(&industria[i], &nPrestador, &nProdutos, &i);
+                cadastrarPrestador(&industria[nPrestador], &nPrestador, &nProdutos, &i);
 
                 do
                 {
@@ -61,10 +61,9 @@ int main()
         case 2:
             /*Cadastrar Cliente ou/e compra*/
             sair = 0;
-            i = 0;
             do
             {
-                cadastrarConsumidor(&cliente[i], &nCliente, industria, nProdutos, &i);
+                cadastrarConsumidor(&cliente[nCliente], &nCliente, industria, nProdutos, &i);
                 do
                 {
                     printf("Deseja cadastrar mais algum cliente: (1)Sim (0)Nao: ");
@@ -84,7 +83,6 @@ int main()
 
         case 4:
             /*Listar clientes*/
-            printf("nCLiente => %d", nCliente);
             for ( x = 0; x < nCliente; x++)
             {
                 listarCliente(&cliente[x]);
@@ -100,7 +98,7 @@ int main()
             break;
 
         case 6:
-            // Implemente a lógica para listar clientes de estado específico
+            // Implemente a lÃ³gica para listar clientes de estado especÃ­fico
             printf("UNIDADE FEDERATIVA:\n\n");
             int idUf, qtdEncontrada = 0;
             printf("[1]--> (AC)Acre\t\t[2]--> (AL)Alagoas\t\t[3]--> (AP)Amapa\t\t[4]--> (AM)Amazonas\n"
@@ -136,8 +134,8 @@ int main()
             break;
             
     	case 7:
-    		//Listar prestadores de serviço por tipo 
-        		printf("Digite o tipo de serviço que deseja buscar: ");
+    		//Listar prestadores de serviÃ§o por tipo 
+        		printf("Digite o tipo de serviÃ§o que deseja buscar: ");
         		scanf("%s", tmps);
         		
         		listarPrestadoresPorTipo(industria, nPrestador, tmps);
@@ -145,7 +143,8 @@ int main()
         	break;
         	 		
         case 8:
-            // Implemente a lógica para encontrar o estado com o serviço mais caro no país
+            // Implemente a lÃ³gica para encontrar o estado com o serviÃ§o mais caro no paÃ­s
+            estadoServicoMaisCaro(industria, nPrestador);
             break;
 
         case 9:
